@@ -1,26 +1,69 @@
 @import "tailwindcss";
 
+@theme {
+  /* Marca Diagnóstico MCY */
+  --color-brand: #206565;
+  --color-brand-light: #277e84;
+  --color-brand-dark: #1f5a5b;
+  --color-accent: #63a636;
+  --color-accent-dark: #538c2d;
+
+  --color-ink: #14302f;
+  --color-muted: #5b6b6a;
+  --color-surface: #f3f7f6;
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-poppins);
+
+  --shadow-soft: 0 10px 40px -12px rgba(31, 90, 91, 0.25);
+  --shadow-card: 0 4px 24px -8px rgba(31, 90, 91, 0.18);
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #14302f;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Animación de aparición al hacer scroll */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  animation: fade-up 0.7s ease forwards;
+}
+
+.reveal-delay-1 { animation-delay: 0.1s; }
+.reveal-delay-2 { animation-delay: 0.2s; }
+.reveal-delay-3 { animation-delay: 0.3s; }
+
+::selection {
+  background: var(--color-accent);
+  color: white;
+}
+
+/* Scrollbar sutil */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--color-surface); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-light);
+  border-radius: 999px;
 }
