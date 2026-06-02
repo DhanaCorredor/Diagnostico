@@ -141,6 +141,59 @@ export const serviceGroups: ServiceGroup[] = [
   },
 ];
 
+// ---- Promociones ----
+
+export type Promo = {
+  id: string;
+  category: string;
+  icon: string; // clave de groupIcons
+  name?: string; // nombre destacado (ej. "Plan Mujer")
+  description: string;
+  price: string;
+  featured?: boolean;
+};
+
+export const promos: Promo[] = [
+  {
+    id: "plan-mujer",
+    category: "Ginecología",
+    icon: "wave",
+    name: "Plan Mujer",
+    description:
+      "Consulta ginecológica + exploración mamaria + rastreo ecográfico pélvico o transvaginal + citología procesada + despistaje de VPH.",
+    price: "45$",
+    featured: true,
+  },
+  {
+    id: "card-holter-mapa",
+    category: "Cardiología",
+    icon: "heart",
+    description: "Holter de Ritmo + MAPA (incluye baterías).",
+    price: "30$",
+  },
+  {
+    id: "dos-ecografias",
+    category: "Ecografías",
+    icon: "wave",
+    description: "Dos ecografías convencionales.",
+    price: "20$",
+  },
+  {
+    id: "doppler-ambos",
+    category: "Ecografías",
+    icon: "wave",
+    description: "Eco Doppler arterial y venoso de ambos miembros.",
+    price: "35$",
+  },
+  {
+    id: "neumo-espiro",
+    category: "Neumonología",
+    icon: "lungs",
+    description: "Valoración o consulta + Espirometría.",
+    price: "50$",
+  },
+];
+
 // Lista plana para el selector del formulario de citas
 export const allServiceNames: string[] = [
   ...serviceGroups.flatMap((g) => [

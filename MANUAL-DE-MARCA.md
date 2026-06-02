@@ -175,6 +175,20 @@ Para fondos destacados (hero, banners):
 
 ---
 
+## 7b. Promociones vigentes
+
+> Combos con precio especial. Mantener actualizado junto con el catálogo.
+
+| Categoría | Promoción | Precio |
+|---|---|---|
+| **Ginecología — Plan Mujer** ⭐ | Consulta ginecológica + exploración mamaria + rastreo ecográfico pélvico o transvaginal + citología procesada + despistaje de VPH | 45$ |
+| Cardiología | Holter de Ritmo + MAPA (incluye baterías) | 30$ |
+| Ecografías | Dos ecografías convencionales | 20$ |
+| Ecografías | Eco Doppler arterial y venoso de ambos miembros | 35$ |
+| Neumonología | Valoración o consulta + Espirometría | 50$ |
+
+---
+
 ## 8. Aplicaciones
 
 - **Sitio web:** header teal con logo blanco, hero con gradiente de marca, botones verde acento, tarjetas blancas con sombra suave.
