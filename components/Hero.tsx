@@ -1,10 +1,11 @@
+import Image from "next/image";
 import { site, waLink } from "@/lib/site";
-import { Whatsapp, Phone, Pin, ArrowRight, Sparkle, Shield, Clock, Check } from "./icons";
+import { Whatsapp, Phone, ArrowRight, Shield, Clock, Pin } from "./icons";
 
 const stats = [
   { value: "+30", label: "Estudios y consultas" },
   { value: "12$", label: "Ecografías desde" },
-  { value: "7:30", label: "Abrimos AM · Lun-Sáb" },
+  { value: "7:30", label: "Abrimos · Lun-Sáb" },
 ];
 
 const trust = [
@@ -21,7 +22,7 @@ export default function Hero() {
       <div className="absolute -right-32 -top-40 h-[34rem] w-[34rem] animate-aurora rounded-full bg-brand/10 blur-3xl" />
       <div className="absolute -left-32 top-20 h-[28rem] w-[28rem] animate-aurora rounded-full bg-accent/10 blur-3xl [animation-delay:4s]" />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
         <div className="reveal text-center lg:text-left">
           <span className="inline-flex items-center gap-2 rounded-full border border-brand/15 bg-white px-4 py-1.5 text-xs font-medium text-brand shadow-sm">
             <span className="relative flex h-2 w-2">
@@ -74,74 +75,78 @@ export default function Hero() {
               );
             })}
           </div>
+
+          {/* Mini-stats */}
+          <div className="mx-auto mt-8 grid max-w-md grid-cols-3 divide-x divide-brand/10 rounded-2xl border border-brand/10 bg-white/70 py-4 lg:mx-0">
+            {stats.map((s) => (
+              <div key={s.label} className="px-2 text-center">
+                <div className="font-display text-xl font-bold text-brand sm:text-2xl">{s.value}</div>
+                <div className="mt-0.5 text-[0.65rem] leading-tight text-muted">{s.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Tarjeta flotante de contacto rápido */}
-        <div className="reveal reveal-delay-2 mx-auto w-full max-w-md">
-          <div className="animate-float rounded-[1.75rem] border border-brand/10 bg-white p-6 shadow-[0_30px_70px_-30px_rgba(31,90,91,0.45)] sm:p-8">
-            <div className="flex items-center gap-3">
-              <Sparkle className="h-5 w-5 text-accent" />
-              <h3 className="font-display text-lg font-bold text-ink">
-                Atención con cita previa
-              </h3>
-            </div>
-            <p className="mt-1 text-sm text-muted">
-              Reserva en minutos. Te confirmamos por WhatsApp.
-            </p>
+        {/* Imagen de especialista con tarjeta flotante */}
+        <div className="reveal reveal-delay-2 mx-auto w-full max-w-md lg:max-w-none">
+          <div className="relative">
+            <div className="absolute -inset-3 -z-10 rounded-[2.25rem] bg-gradient-to-br from-brand/20 via-brand-light/10 to-accent/20 blur-2xl" />
 
-            <div className="mt-6 space-y-3">
-              <a
-                href={`tel:${site.phoneIntl.replace(/[^+\d]/g, "")}`}
-                className="flex items-center gap-4 rounded-2xl border border-brand/5 bg-surface p-4 transition-colors hover:bg-brand/5"
-              >
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand text-white">
-                  <Phone className="h-5 w-5" />
-                </span>
-                <span>
-                  <span className="block text-xs text-muted">Llámanos</span>
-                  <span className="block font-semibold text-ink">{site.phoneDisplay}</span>
-                </span>
-              </a>
+            <div className="animate-float relative aspect-[4/5] overflow-hidden rounded-[1.75rem] border border-brand/10 shadow-[0_30px_70px_-30px_rgba(31,90,91,0.5)]">
+              <Image
+                src="/img/doctor-4.jpg"
+                alt="Especialista de Diagnóstico Centro de Salud con estetoscopio"
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 42vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/35 via-transparent to-transparent" />
 
-              <a
-                href={site.mapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 rounded-2xl border border-brand/5 bg-surface p-4 transition-colors hover:bg-brand/5"
-              >
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent text-white">
-                  <Pin className="h-5 w-5" />
-                </span>
-                <span>
-                  <span className="block text-xs text-muted">Visítanos</span>
-                  <span className="block text-sm font-semibold text-ink">
-                    C.C. Parque Aragua, Nivel 3
-                  </span>
-                </span>
-              </a>
-            </div>
+              {/* Badge superior */}
+              <span className="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1.5 text-xs font-semibold text-brand shadow-md backdrop-blur">
+                <Shield className="h-3.5 w-3.5 text-accent" />
+                Especialistas
+              </span>
 
-            {/* Mini-stats */}
-            <div className="mt-6 grid grid-cols-3 gap-2 border-t border-surface pt-5">
-              {stats.map((s) => (
-                <div key={s.label} className="text-center">
-                  <div className="font-display text-xl font-bold text-brand">{s.value}</div>
-                  <div className="mt-0.5 text-[0.65rem] leading-tight text-muted">{s.label}</div>
+              {/* Tarjeta de contacto flotante sobre la foto */}
+              <div className="absolute inset-x-3 bottom-3 flex items-center justify-between gap-3 rounded-2xl border border-white/50 bg-white/90 p-3 shadow-lg backdrop-blur">
+                <div className="min-w-0">
+                  <p className="flex items-center gap-1.5 text-[0.7rem] font-medium text-muted">
+                    <span className="relative flex h-1.5 w-1.5">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70" />
+                      <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
+                    </span>
+                    Cita previa · {site.city.split(",")[0]}
+                  </p>
+                  <p className="truncate font-display text-base font-bold text-ink">
+                    {site.phoneDisplay}
+                  </p>
                 </div>
-              ))}
+                <a
+                  href={waLink("Hola, deseo agendar una cita.")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Agendar por WhatsApp"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent text-white shadow-md transition-colors hover:bg-accent-dark"
+                >
+                  <Whatsapp className="h-5 w-5" />
+                </a>
+              </div>
             </div>
 
-            <a
-              href="#agendar"
-              className="group mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand to-brand-light py-3.5 font-semibold text-white transition-all hover:shadow-lg"
-            >
-              Solicitar cita ahora
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
-            <p className="mt-3 flex items-center justify-center gap-1.5 text-xs text-muted">
-              <Check className="h-3.5 w-3.5 text-accent" />
-              Sin filas · Confirmación inmediata
-            </p>
+            {/* Mini-tarjeta flotante lateral */}
+            <div className="absolute -left-4 top-10 hidden rounded-2xl border border-brand/10 bg-white px-4 py-3 shadow-xl sm:block">
+              <div className="flex items-center gap-2.5">
+                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand/10 text-brand">
+                  <Phone className="h-4.5 w-4.5" />
+                </span>
+                <div>
+                  <p className="text-[0.65rem] text-muted">Atención</p>
+                  <p className="text-sm font-bold text-ink">Lun a Sáb</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
