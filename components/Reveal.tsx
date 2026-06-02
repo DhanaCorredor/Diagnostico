@@ -17,6 +17,21 @@ export default function Reveal({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    // Respeta "reducir movimiento" y entornos sin IntersectionObserver
+    const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || typeof IntersectionObserver === "undefined") {
+      setShown(true);
+      return;
+    }
+
+    // Si ya está dentro del viewport al montar, muéstralo enseguida
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) {
+      setShown(true);
+      return;
+    }
+
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -24,10 +39,17 @@ export default function Reveal({
           obs.disconnect();
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
     );
     obs.observe(el);
-    return () => obs.disconnect();
+
+    // Seguro: revelar pase lo que pase tras un breve tiempo
+    const fallback = window.setTimeout(() => setShown(true), 1200);
+
+    return () => {
+      obs.disconnect();
+      window.clearTimeout(fallback);
+    };
   }, []);
 
   return (
