@@ -28,14 +28,14 @@ export default function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/95 shadow-[0_4px_24px_-12px_rgba(31,90,91,0.35)] backdrop-blur"
+          ? "border-b border-brand/10 bg-white/85 shadow-[0_4px_30px_-18px_rgba(31,90,91,0.4)] backdrop-blur-xl"
           : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 sm:px-8">
         <a href="#inicio" className="flex items-center" aria-label={site.name}>
           <Image
-            src={scrolled ? "/logo-color.png" : "/logo-white.png"}
+            src="/logo-color.png"
             alt={site.legalName}
             width={210}
             height={56}
@@ -44,16 +44,12 @@ export default function Header() {
           />
         </a>
 
-        <nav className="hidden items-center gap-8 lg:flex">
+        <nav className="hidden items-center gap-1 lg:flex">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className={`text-sm font-medium transition-colors ${
-                scrolled
-                  ? "text-ink/80 hover:text-brand"
-                  : "text-white/90 hover:text-white"
-              }`}
+              className="rounded-full px-4 py-2 text-sm font-medium text-ink/75 transition-colors hover:bg-brand/5 hover:text-brand"
             >
               {l.label}
             </a>
@@ -62,7 +58,7 @@ export default function Header() {
             href={waLink("Hola, deseo más información sobre sus servicios.")}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-all hover:bg-accent-dark hover:shadow-lg"
+            className="ml-3 inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-[0_8px_24px_-8px_rgba(99,166,54,0.7)] transition-all hover:bg-accent-dark"
           >
             <Whatsapp className="h-4 w-4" />
             WhatsApp
@@ -73,33 +69,19 @@ export default function Header() {
         <button
           onClick={() => setOpen((v) => !v)}
           aria-label="Abrir menú"
-          className={`flex h-10 w-10 items-center justify-center rounded-lg lg:hidden ${
-            scrolled ? "text-ink" : "text-white"
-          }`}
+          className="flex h-10 w-10 items-center justify-center rounded-lg text-ink lg:hidden"
         >
           <div className="space-y-1.5">
-            <span
-              className={`block h-0.5 w-6 bg-current transition-transform ${
-                open ? "translate-y-2 rotate-45" : ""
-              }`}
-            />
-            <span
-              className={`block h-0.5 w-6 bg-current transition-opacity ${
-                open ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`block h-0.5 w-6 bg-current transition-transform ${
-                open ? "-translate-y-2 -rotate-45" : ""
-              }`}
-            />
+            <span className={`block h-0.5 w-6 bg-current transition-transform ${open ? "translate-y-2 rotate-45" : ""}`} />
+            <span className={`block h-0.5 w-6 bg-current transition-opacity ${open ? "opacity-0" : ""}`} />
+            <span className={`block h-0.5 w-6 bg-current transition-transform ${open ? "-translate-y-2 -rotate-45" : ""}`} />
           </div>
         </button>
       </div>
 
-      {/* Menú móvil desplegable */}
+      {/* Menú móvil */}
       <div
-        className={`overflow-hidden bg-white shadow-lg transition-[max-height] duration-300 lg:hidden ${
+        className={`overflow-hidden bg-white/95 shadow-lg backdrop-blur-xl transition-[max-height] duration-300 lg:hidden ${
           open ? "max-h-96" : "max-h-0"
         }`}
       >

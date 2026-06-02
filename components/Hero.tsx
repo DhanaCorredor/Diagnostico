@@ -15,31 +15,29 @@ const trust = [
 
 export default function Hero() {
   return (
-    <section id="inicio" className="relative overflow-hidden bg-brand-dark pt-28 pb-24 sm:pt-36 sm:pb-32">
-      {/* Aurora animada */}
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand to-brand-light" />
-      <div className="absolute -right-32 -top-32 h-[34rem] w-[34rem] animate-aurora rounded-full bg-accent/25 blur-3xl" />
-      <div className="absolute -bottom-40 -left-24 h-[32rem] w-[32rem] animate-aurora rounded-full bg-brand-light/50 blur-3xl [animation-delay:3s]" />
-      <div className="absolute left-1/2 top-1/3 h-72 w-72 animate-aurora rounded-full bg-accent/10 blur-3xl [animation-delay:6s]" />
-      <div className="grain absolute inset-0 opacity-60" />
+    <section id="inicio" className="relative overflow-hidden bg-white pt-28 pb-20 sm:pt-36 sm:pb-28">
+      {/* Fondo claro con tintes suaves */}
+      <div className="absolute inset-0 bg-gradient-to-b from-surface/80 via-white to-white" />
+      <div className="absolute -right-32 -top-40 h-[34rem] w-[34rem] animate-aurora rounded-full bg-brand/10 blur-3xl" />
+      <div className="absolute -left-32 top-20 h-[28rem] w-[28rem] animate-aurora rounded-full bg-accent/10 blur-3xl [animation-delay:4s]" />
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="reveal text-center lg:text-left">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-medium text-white/90 backdrop-blur">
-            <span className="flex h-2 w-2 items-center justify-center">
-              <span className="absolute h-2 w-2 animate-ping rounded-full bg-accent" />
-              <span className="h-2 w-2 rounded-full bg-accent" />
+          <span className="inline-flex items-center gap-2 rounded-full border border-brand/15 bg-white px-4 py-1.5 text-xs font-medium text-brand shadow-sm">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
             </span>
             {site.bioShort}
           </span>
 
-          <h1 className="mt-6 font-display text-[2rem] font-extrabold leading-[1.08] tracking-tight text-white [text-wrap:balance] sm:text-5xl lg:text-[4rem] lg:leading-[1.05]">
+          <h1 className="mt-6 font-display text-[2rem] font-extrabold leading-[1.08] tracking-tight text-ink [text-wrap:balance] sm:text-5xl lg:text-[4rem] lg:leading-[1.04]">
             Tu salud merece un{" "}
             <span className="text-gradient">diagnóstico</span>{" "}
             confiable
           </h1>
 
-          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-white/85 lg:mx-0">
+          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted lg:mx-0">
             Ecografía integral y Doppler, holter de ritmo, MAPA, electrocardiograma
             y ecocardiograma. Equipos modernos y especialistas a tu servicio en el
             corazón de Maracay.
@@ -48,7 +46,7 @@ export default function Hero() {
           <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
             <a
               href="#agendar"
-              className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 font-semibold text-white shadow-[0_12px_40px_-12px_rgba(99,166,54,0.8)] transition-all hover:bg-accent-dark hover:shadow-[0_16px_50px_-12px_rgba(99,166,54,0.9)] sm:w-auto"
+              className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 font-semibold text-white shadow-[0_14px_40px_-12px_rgba(99,166,54,0.7)] transition-all hover:bg-accent-dark hover:shadow-[0_18px_50px_-12px_rgba(99,166,54,0.85)] sm:w-auto"
             >
               Agendar mi cita
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -57,9 +55,9 @@ export default function Hero() {
               href={waLink("Hola, deseo agendar una cita.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass inline-flex w-full items-center justify-center gap-2 rounded-full px-7 py-3.5 font-semibold text-white transition-all hover:bg-white/20 sm:w-auto"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-brand/20 bg-white px-7 py-3.5 font-semibold text-brand transition-all hover:border-brand/40 hover:bg-brand/5 sm:w-auto"
             >
-              <Whatsapp className="h-5 w-5" />
+              <Whatsapp className="h-5 w-5 text-accent" />
               {site.phoneDisplay}
             </a>
           </div>
@@ -69,7 +67,7 @@ export default function Hero() {
             {trust.map((t) => {
               const Icon = t.icon;
               return (
-                <span key={t.text} className="inline-flex items-center gap-2 text-sm text-white/80">
+                <span key={t.text} className="inline-flex items-center gap-2 text-sm text-muted">
                   <Icon className="h-4.5 w-4.5 text-accent" />
                   {t.text}
                 </span>
@@ -80,7 +78,7 @@ export default function Hero() {
 
         {/* Tarjeta flotante de contacto rápido */}
         <div className="reveal reveal-delay-2 mx-auto w-full max-w-md">
-          <div className="animate-float rounded-[1.75rem] border border-white/15 bg-white/95 p-6 shadow-[0_40px_80px_-30px_rgba(0,0,0,0.5)] backdrop-blur sm:p-8">
+          <div className="animate-float rounded-[1.75rem] border border-brand/10 bg-white p-6 shadow-[0_30px_70px_-30px_rgba(31,90,91,0.45)] sm:p-8">
             <div className="flex items-center gap-3">
               <Sparkle className="h-5 w-5 text-accent" />
               <h3 className="font-display text-lg font-bold text-ink">
@@ -94,7 +92,7 @@ export default function Hero() {
             <div className="mt-6 space-y-3">
               <a
                 href={`tel:${site.phoneIntl.replace(/[^+\d]/g, "")}`}
-                className="flex items-center gap-4 rounded-2xl bg-surface p-4 transition-colors hover:bg-brand/5"
+                className="flex items-center gap-4 rounded-2xl border border-brand/5 bg-surface p-4 transition-colors hover:bg-brand/5"
               >
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand text-white">
                   <Phone className="h-5 w-5" />
@@ -109,7 +107,7 @@ export default function Hero() {
                 href={site.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 rounded-2xl bg-surface p-4 transition-colors hover:bg-brand/5"
+                className="flex items-center gap-4 rounded-2xl border border-brand/5 bg-surface p-4 transition-colors hover:bg-brand/5"
               >
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent text-white">
                   <Pin className="h-5 w-5" />
@@ -146,16 +144,6 @@ export default function Hero() {
             </p>
           </div>
         </div>
-      </div>
-
-      {/* Onda inferior */}
-      <div className="pointer-events-none absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
-        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="h-[60px] w-full">
-          <path
-            d="M0,40 C360,90 720,0 1080,30 C1260,45 1380,55 1440,50 L1440,80 L0,80 Z"
-            fill="white"
-          />
-        </svg>
       </div>
     </section>
   );
