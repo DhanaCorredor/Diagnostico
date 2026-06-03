@@ -1,5 +1,5 @@
-import { site, waLink } from "@/lib/site";
-import { Whatsapp, Phone, Pin, ArrowRight, Sparkle, Shield, Clock, Check } from "./icons";
+import { site } from "@/lib/site";
+import { Phone, Pin, ArrowRight, Sparkle, Shield, Clock } from "./icons";
 
 const stats = [
   { value: "+30", label: "Estudios y consultas" },
@@ -50,15 +50,6 @@ export default function Hero() {
             >
               Agendar mi cita
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </a>
-            <a
-              href={waLink("Hola, deseo agendar una cita.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-brand/20 bg-white px-7 py-3.5 font-semibold text-brand transition-all hover:border-brand/40 hover:bg-brand/5 sm:w-auto"
-            >
-              <Whatsapp className="h-5 w-5 text-accent" />
-              {site.phoneDisplay}
             </a>
           </div>
 
@@ -130,18 +121,6 @@ export default function Hero() {
                 </div>
               ))}
             </div>
-
-            <a
-              href="#agendar"
-              className="group mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand to-brand-light py-3.5 font-semibold text-white transition-all hover:shadow-lg"
-            >
-              Solicitar cita ahora
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
-            <p className="mt-3 flex items-center justify-center gap-1.5 text-xs text-muted">
-              <Check className="h-3.5 w-3.5 text-accent" />
-              Sin filas · Confirmación inmediata
-            </p>
           </div>
         </div>
       </div>

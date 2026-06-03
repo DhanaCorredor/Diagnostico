@@ -219,7 +219,7 @@ export default function Appointment() {
 }
 
 const inputCls =
-  "w-full rounded-xl border border-surface bg-surface/40 px-4 py-3 text-sm text-ink outline-none transition-colors placeholder:text-muted/70 focus:border-brand focus:bg-white focus:ring-2 focus:ring-brand/20";
+  "w-full rounded-xl border border-surface bg-surface/40 px-4 py-3 text-base text-ink outline-none transition-colors placeholder:text-muted/70 focus:border-brand focus:bg-white focus:ring-2 focus:ring-brand/20 sm:text-sm";
 
 function Field({
   label,

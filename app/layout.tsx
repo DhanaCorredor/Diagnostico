@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Sora } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
@@ -19,7 +19,7 @@ const sora = Sora({
 export const metadata: Metadata = {
   metadataBase: new URL("https://diagnostico-mcy.vercel.app"),
   title: {
-    default: `${site.legalName} | ${site.tagline} en Maracay`,
+    default: `${site.tagline} en Maracay | ${site.legalName}`,
     template: `%s | ${site.legalName}`,
   },
   description: site.description,
@@ -48,12 +48,21 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#206565",
+  colorScheme: "light",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es" className={`${inter.variable} ${sora.variable}`}>
-      <body className="min-h-screen bg-white antialiased">{children}</body>
+      <body className="min-h-screen overflow-x-hidden bg-white antialiased">
+        {children}
+      </body>
     </html>
   );
 }

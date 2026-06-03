@@ -31,6 +31,11 @@
 
 html {
   scroll-behavior: smooth;
+  /* Evita que el header fijo tape el título al navegar por anclas */
+  scroll-padding-top: 5.5rem;
+  /* Evita scroll horizontal por elementos decorativos en móvil */
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -39,6 +44,17 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  /* Quita el flash gris al tocar enlaces/botones en móvil */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Evita el zoom automático de iOS al enfocar campos (font-size < 16px) */
+@media (max-width: 640px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
 }
 
 /* ---- Animaciones ---- */
@@ -118,6 +134,14 @@ body {
     transparent 0
   );
   background-size: 28px 28px;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 .glass {

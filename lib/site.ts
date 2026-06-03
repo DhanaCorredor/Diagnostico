@@ -6,7 +6,7 @@ export const site = {
   legalName: "Diagnóstico Centro de Salud",
   tagline: "Centro de Especialidades Médicas",
   description:
-    "Ecografía integral y Doppler, holter de ritmo, MAPA, electrocardiograma y ecocardiograma. Atención médica confiable en Maracay.",
+    "Consultas médicas especializadas, ecografía integral y Doppler, estudios cardíacos (holter, MAPA, electrocardiograma, ecocardiograma), espirometría y endoscopia nasal en Maracay.",
   phoneDisplay: "0412-9160186",
   phoneIntl: "+58 412-9160186",
   whatsapp: "584129160186", // formato internacional sin signos para wa.me

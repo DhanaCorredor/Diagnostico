@@ -26,8 +26,8 @@ export default function Services() {
           </p>
         </Reveal>
 
-        {/* Pestañas */}
-        <div className="mt-10 flex flex-wrap justify-center gap-2.5">
+        {/* Pestañas — fila con scroll en móvil, centradas en escritorio */}
+        <div className="no-scrollbar -mx-5 mt-10 flex gap-2.5 overflow-x-auto px-5 pb-1 sm:mx-0 sm:flex-wrap sm:justify-center sm:overflow-visible sm:px-0">
           {serviceGroups.map((g) => {
             const GIcon = groupIcons[g.icon];
             const on = g.id === active;
@@ -35,7 +35,7 @@ export default function Services() {
               <button
                 key={g.id}
                 onClick={() => setActive(g.id)}
-                className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all ${
+                className={`inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full px-5 py-2.5 text-sm font-semibold transition-all ${
                   on
                     ? "bg-brand text-white shadow-md"
                     : "bg-white text-ink/70 hover:bg-white hover:text-brand hover:shadow-sm"
