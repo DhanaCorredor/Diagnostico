@@ -59,7 +59,7 @@ export default function Header() {
             href={waLink("Hola, deseo más información sobre sus servicios.")}
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-3 inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-[0_8px_24px_-8px_rgba(99,166,54,0.7)] transition-all hover:scale-105 hover:bg-accent-dark"
+            className="btn-shine ml-3 inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-[0_8px_24px_-8px_rgba(99,166,54,0.7)] transition-all hover:scale-105 hover:bg-accent-dark"
           >
             <Whatsapp className="h-4 w-4" />
             WhatsApp

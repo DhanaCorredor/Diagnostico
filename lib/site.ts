@@ -150,6 +150,7 @@ export type Promo = {
   icon: string; // clave de groupIcons
   name?: string; // nombre destacado (ej. "Plan Mujer")
   description: string;
+  options?: string[]; // opciones a escoger (se muestran en lista)
   price: string;
   featured?: boolean;
 };
@@ -163,26 +164,39 @@ export const promos: Promo[] = [
     description:
       "Consulta ginecológica + exploración mamaria + rastreo ecográfico pélvico o transvaginal + citología procesada + despistaje de VPH.",
     price: "45$",
-    featured: true,
   },
   {
     id: "card-holter-mapa",
     category: "Cardiología",
     icon: "heart",
+    name: "Holter + MAPA",
     description: "Holter de Ritmo + MAPA (incluye baterías).",
     price: "30$",
+    featured: true,
   },
   {
     id: "dos-ecografias",
     category: "Ecografías",
     icon: "wave",
-    description: "Dos ecografías convencionales.",
+    name: "DOS Ecografías",
+    description: "Convencionales, a escoger entre:",
+    options: [
+      "Abdominal",
+      "Renal",
+      "Tiroideo",
+      "Mamario",
+      "Pélvico",
+      "Partes blandas",
+      "Testicular",
+      "Prostático",
+    ],
     price: "20$",
   },
   {
     id: "doppler-ambos",
     category: "Ecografías",
     icon: "wave",
+    name: "Doppler de Miembros",
     description: "Eco Doppler arterial y venoso de ambos miembros.",
     price: "35$",
   },
@@ -190,6 +204,7 @@ export const promos: Promo[] = [
     id: "neumo-espiro",
     category: "Neumonología",
     icon: "lungs",
+    name: "Chequeo Pulmonar",
     description: "Valoración o consulta + Espirometría.",
     price: "50$",
   },

@@ -1,5 +1,6 @@
 import { site } from "@/lib/site";
 import { Phone, Pin, ArrowRight, Sparkle, Shield, Clock } from "./icons";
+import CountUp from "./CountUp";
 
 const stats = [
   { value: "+30", label: "Estudios y consultas" },
@@ -16,6 +17,14 @@ const trust = [
 export default function Hero() {
   return (
     <section id="inicio" className="relative overflow-hidden bg-[#266d6c] pt-28 pb-14 sm:pt-32 sm:pb-20">
+      {/* Detalles flotantes sutiles (no tocan el borde superior) */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        <span className="animate-float-slow absolute left-[7%] top-[52%] h-16 w-16 rounded-full border border-white/10" />
+        <span className="animate-float-slow absolute right-[22%] bottom-[10%] h-24 w-24 rounded-full border border-white/10" />
+        <span className="animate-float absolute right-[12%] top-[28%] h-3 w-3 rounded-full bg-accent/60" />
+        <span className="animate-float-delayed absolute left-[18%] top-[80%] h-2.5 w-2.5 rounded-full bg-white/40" />
+        <span className="animate-float-delayed absolute right-[6%] top-[64%] h-2 w-2 rounded-full bg-white/30" />
+      </div>
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="reveal text-center lg:text-left">
@@ -44,7 +53,7 @@ export default function Hero() {
           <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
             <a
               href="#servicios"
-              className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 font-semibold text-white shadow-[0_14px_40px_-12px_rgba(99,166,54,0.7)] transition-all hover:bg-accent-dark hover:shadow-[0_18px_50px_-12px_rgba(99,166,54,0.85)] sm:w-auto"
+              className="btn-shine group inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 font-semibold text-white shadow-[0_14px_40px_-12px_rgba(99,166,54,0.7)] transition-all hover:bg-accent-dark hover:shadow-[0_18px_50px_-12px_rgba(99,166,54,0.85)] sm:w-auto"
             >
               Ver servicios
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -114,7 +123,9 @@ export default function Hero() {
             <div className="mt-6 grid grid-cols-3 gap-2 border-t border-surface pt-5">
               {stats.map((s) => (
                 <div key={s.label} className="text-center">
-                  <div className="font-display text-xl font-bold text-brand">{s.value}</div>
+                  <div className="font-display text-xl font-bold text-brand">
+                    <CountUp value={s.value} />
+                  </div>
                   <div className="mt-0.5 text-[0.65rem] leading-tight text-muted">{s.label}</div>
                 </div>
               ))}

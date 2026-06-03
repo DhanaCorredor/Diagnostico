@@ -166,6 +166,41 @@ body {
   transform: scaleX(1);
 }
 
+/* Brillo que recorre los botones al pasar el cursor */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+.btn-shine:hover::after {
+  left: 150%;
+}
+
+/* Variantes de flotación para elementos decorativos */
+.animate-float-slow {
+  animation: float 9s ease-in-out infinite;
+}
+.animate-float-delayed {
+  animation: float 7s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
 /* Texto con degradado en movimiento continuo */
 .text-gradient-animate {
   background: linear-gradient(110deg, #d4f7b4, var(--color-accent), #d4f7b4);
@@ -226,6 +261,8 @@ body {
   .animate-marquee,
   .animate-aurora,
   .animate-float,
+  .animate-float-slow,
+  .animate-float-delayed,
   .animate-header-down,
   .animate-pulse-ring,
   .text-gradient-animate,

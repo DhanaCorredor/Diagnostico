@@ -21,7 +21,8 @@ export default function Contact() {
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[1fr_1.2fr]">
           {/* Tarjetas de info */}
-          <Reveal className="space-y-4">
+          <div className="space-y-4">
+            <Reveal>
             <InfoCard
               icon={<Pin className="h-6 w-6" />}
               title="Ubicación"
@@ -38,7 +39,9 @@ export default function Contact() {
                 Ver en Google Maps →
               </a>
             </InfoCard>
+            </Reveal>
 
+            <Reveal delay={0.08}>
             <InfoCard icon={<Phone className="h-6 w-6" />} title="Teléfono / Citas">
               <a
                 href={`tel:${site.phoneIntl.replace(/[^+\d]/g, "")}`}
@@ -47,7 +50,9 @@ export default function Contact() {
                 {site.phoneDisplay}
               </a>
             </InfoCard>
+            </Reveal>
 
+            <Reveal delay={0.16}>
             <InfoCard icon={<Clock className="h-6 w-6" />} title="Horario de atención">
               <ul className="space-y-1.5">
                 {site.hours.map((h) => (
@@ -61,13 +66,15 @@ export default function Contact() {
                 ))}
               </ul>
             </InfoCard>
+            </Reveal>
 
+            <Reveal delay={0.24}>
             <div className="flex flex-col gap-3 sm:flex-row">
               <a
                 href={waLink("Hola, deseo más información.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-accent px-5 py-3 font-semibold text-white transition-colors hover:bg-accent-dark"
+                className="btn-shine inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-accent px-5 py-3 font-semibold text-white transition-colors hover:bg-accent-dark"
               >
                 <Whatsapp className="h-5 w-5" />
                 WhatsApp
@@ -82,7 +89,8 @@ export default function Contact() {
                 @{site.instagram}
               </a>
             </div>
-          </Reveal>
+            </Reveal>
+          </div>
 
           {/* Mapa */}
           <Reveal delay={0.1}>
@@ -116,7 +124,7 @@ function InfoCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-2xl bg-white p-6 shadow-[0_4px_24px_-12px_rgba(31,90,91,0.15)]">
+    <div className="rounded-2xl bg-white p-6 shadow-[0_4px_24px_-12px_rgba(31,90,91,0.15)] transition-all hover:-translate-y-1 hover:shadow-[0_18px_40px_-20px_rgba(31,90,91,0.35)]">
       <div className="flex items-start gap-4">
         <span
           className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-white ${

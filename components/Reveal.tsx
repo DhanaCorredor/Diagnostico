@@ -18,18 +18,22 @@ export default function Reveal({
     const el = ref.current;
     if (!el) return;
 
+    // Muestra en el siguiente frame (evita setState síncrono en el efecto)
+    const showNow = () => {
+      const id = requestAnimationFrame(() => setShown(true));
+      return () => cancelAnimationFrame(id);
+    };
+
     // Respeta "reducir movimiento" y entornos sin IntersectionObserver
     const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
     if (reduce || typeof IntersectionObserver === "undefined") {
-      setShown(true);
-      return;
+      return showNow();
     }
 
     // Si ya está dentro del viewport al montar, muéstralo enseguida
     const rect = el.getBoundingClientRect();
     if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) {
-      setShown(true);
-      return;
+      return showNow();
     }
 
     const obs = new IntersectionObserver(
@@ -58,8 +62,8 @@ export default function Reveal({
       className={className}
       style={{
         opacity: shown ? 1 : 0,
-        transform: shown ? "translateY(0)" : "translateY(28px)",
-        transition: `opacity .7s ease ${delay}s, transform .7s ease ${delay}s`,
+        transform: shown ? "translateY(0)" : "translateY(34px)",
+        transition: `opacity .8s ease ${delay}s, transform .8s cubic-bezier(0.22,1,0.36,1) ${delay}s`,
       }}
     >
       {children}

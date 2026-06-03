@@ -44,7 +44,7 @@ export default function Features() {
               href={waLink("Hola, deseo más información sobre sus servicios.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative inline-flex shrink-0 items-center gap-2 rounded-full bg-brand px-6 py-3 font-semibold text-white transition-all hover:scale-105 hover:bg-brand-dark"
+              className="btn-shine group inline-flex shrink-0 items-center gap-2 rounded-full bg-brand px-6 py-3 font-semibold text-white transition-all hover:scale-105 hover:bg-brand-dark"
             >
               Conversemos
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
