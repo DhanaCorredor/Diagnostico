@@ -19,7 +19,7 @@ const sora = Sora({
 export const metadata: Metadata = {
   metadataBase: new URL("https://diagnostico-mcy.vercel.app"),
   title: {
-    default: `${site.tagline} en Maracay | ${site.legalName}`,
+    default: `${site.legalName} | ${site.tagline} en Maracay`,
     template: `%s | ${site.legalName}`,
   },
   description: site.description,
@@ -41,10 +41,6 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_VE",
     siteName: site.legalName,
-  },
-  icons: {
-    icon: "/icon-dark.png",
-    apple: "/icon-dark.png",
   },
 };
 

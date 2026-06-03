@@ -5,6 +5,7 @@ export const site = {
   name: "DIAGNÓSTICO",
   legalName: "Diagnóstico Centro de Salud",
   tagline: "Centro de Especialidades Médicas",
+  slogan: "No te dejes para después",
   description:
     "Consultas médicas especializadas, ecografía integral y Doppler, estudios cardíacos (holter, MAPA, electrocardiograma, ecocardiograma), espirometría y endoscopia nasal en Maracay.",
   phoneDisplay: "0412-9160186",

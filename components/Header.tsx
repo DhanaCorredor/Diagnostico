@@ -25,21 +25,23 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "border-b border-brand/10 bg-white/85 shadow-[0_4px_30px_-18px_rgba(31,90,91,0.4)] backdrop-blur-xl"
-          : "bg-transparent"
+      className={`animate-header-down fixed inset-x-0 top-0 z-50 bg-[#266d6c] transition-shadow duration-300 ${
+        scrolled ? "shadow-[0_10px_30px_-12px_rgba(0,0,0,0.55)]" : ""
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 sm:px-8">
-        <a href="#inicio" className="flex items-center" aria-label={site.name}>
+        <a
+          href="#inicio"
+          className="group flex items-center"
+          aria-label={site.legalName}
+        >
           <Image
-            src="/logo-color.png"
+            src="/logo-white.png"
             alt={site.legalName}
-            width={210}
-            height={56}
+            width={260}
+            height={49}
             priority
-            className="h-9 w-auto sm:h-11"
+            className="h-9 w-auto transition-transform duration-300 group-hover:scale-105 sm:h-10"
           />
         </a>
 
@@ -48,7 +50,7 @@ export default function Header() {
             <a
               key={l.href}
               href={l.href}
-              className="rounded-full px-4 py-2 text-sm font-medium text-ink/75 transition-colors hover:bg-brand/5 hover:text-brand"
+              className="nav-link rounded-full px-4 py-2 text-sm font-medium text-white/80 transition-colors hover:text-white"
             >
               {l.label}
             </a>
@@ -57,7 +59,7 @@ export default function Header() {
             href={waLink("Hola, deseo más información sobre sus servicios.")}
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-3 inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-[0_8px_24px_-8px_rgba(99,166,54,0.7)] transition-all hover:bg-accent-dark"
+            className="ml-3 inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-[0_8px_24px_-8px_rgba(99,166,54,0.7)] transition-all hover:scale-105 hover:bg-accent-dark"
           >
             <Whatsapp className="h-4 w-4" />
             WhatsApp
@@ -68,7 +70,7 @@ export default function Header() {
         <button
           onClick={() => setOpen((v) => !v)}
           aria-label="Abrir menú"
-          className="flex h-10 w-10 items-center justify-center rounded-lg text-ink lg:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-lg text-white lg:hidden"
         >
           <div className="space-y-1.5">
             <span className={`block h-0.5 w-6 bg-current transition-transform ${open ? "translate-y-2 rotate-45" : ""}`} />
@@ -80,7 +82,7 @@ export default function Header() {
 
       {/* Menú móvil */}
       <div
-        className={`overflow-hidden bg-white/95 shadow-lg backdrop-blur-xl transition-[max-height] duration-300 lg:hidden ${
+        className={`overflow-hidden border-t border-white/10 bg-[#266d6c] shadow-lg transition-[max-height] duration-300 lg:hidden ${
           open ? "max-h-96" : "max-h-0"
         }`}
       >
@@ -90,7 +92,7 @@ export default function Header() {
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="rounded-lg px-4 py-3 font-medium text-ink hover:bg-surface"
+              className="rounded-lg px-4 py-3 font-medium text-white/90 transition-colors hover:bg-white/10"
             >
               {l.label}
             </a>

@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: __dirname,
   },
+  // Permite previsualizar desde el móvil en la misma red WiFi durante el desarrollo
+  allowedDevOrigins: ["192.168.1.128"],
 };
 
 export default nextConfig;

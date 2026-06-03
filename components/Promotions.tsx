@@ -1,15 +1,15 @@
+import Image from "next/image";
 import { promos, waLink } from "@/lib/site";
 import { groupIcons, Whatsapp, Sparkle, ArrowRight, Check } from "./icons";
 import Reveal from "./Reveal";
 
 export default function Promotions() {
-  const featured = promos.find((p) => p.featured);
   const rest = promos.filter((p) => !p.featured);
 
   return (
     <section
       id="promociones"
-      className="relative overflow-hidden bg-surface py-20 sm:py-24"
+      className="relative overflow-hidden bg-surface py-14 sm:py-20"
     >
       {/* Tintes suaves */}
       <div className="absolute -left-24 top-10 h-80 w-80 rounded-full bg-brand/5 blur-3xl" />
@@ -30,48 +30,43 @@ export default function Promotions() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid items-start gap-5 lg:grid-cols-3">
-          {/* Promo destacada */}
-          {featured && (
-            <Reveal className="lg:row-span-2">
-              <FeaturedPromo />
-            </Reveal>
-          )}
+        {/* Promo destacada — ancha con imagen */}
+        <Reveal className="mt-10">
+          <FeaturedPromo />
+        </Reveal>
 
-          {/* Resto de promos */}
+        {/* Resto de promos — tarjetas uniformes */}
+        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {rest.map((p, i) => {
             const Icon = groupIcons[p.icon];
             return (
               <Reveal key={p.id} delay={i * 0.07}>
-                <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-brand/10 bg-white shadow-[0_6px_30px_-18px_rgba(31,90,91,0.3)] transition-all hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-24px_rgba(31,90,91,0.4)]">
-                  <span className="block h-1 w-full bg-gradient-to-r from-brand to-brand-light" />
-                  <div className="flex flex-1 flex-col p-6">
-                    <div className="flex items-center justify-between">
-                      <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand to-brand-light text-white">
-                        <Icon className="h-6 w-6" />
-                      </span>
-                      <span className="rounded-lg bg-brand/10 px-3 py-1 font-display text-lg font-extrabold text-brand">
-                        {p.price}
-                      </span>
-                    </div>
-                    <span className="mt-4 text-xs font-semibold uppercase tracking-wider text-accent-dark">
-                      {p.category}
+                <div className="group flex h-full flex-col rounded-2xl border border-brand/10 bg-white p-6 shadow-[0_6px_30px_-18px_rgba(31,90,91,0.3)] transition-all hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-24px_rgba(31,90,91,0.4)]">
+                  <div className="flex items-center justify-between">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand to-brand-light text-white">
+                      <Icon className="h-6 w-6" />
                     </span>
-                    <p className="mt-1 flex-1 text-sm font-medium leading-snug text-ink">
-                      {p.description}
-                    </p>
-                    <a
-                      href={waLink(
-                        `Hola, deseo la promoción de ${p.category}: ${p.description} (${p.price})`
-                      )}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-4 inline-flex items-center justify-center gap-1.5 rounded-full bg-accent px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-dark"
-                    >
-                      <Whatsapp className="h-4 w-4" />
-                      La quiero
-                    </a>
+                    <span className="rounded-lg bg-brand/10 px-3 py-1 font-display text-lg font-extrabold text-brand">
+                      {p.price}
+                    </span>
                   </div>
+                  <span className="mt-4 text-xs font-semibold uppercase tracking-wider text-accent-dark">
+                    {p.category}
+                  </span>
+                  <p className="mt-1 flex-1 text-sm font-medium leading-snug text-ink">
+                    {p.description}
+                  </p>
+                  <a
+                    href={waLink(
+                      `Hola, deseo la promoción de ${p.category}: ${p.description} (${p.price})`
+                    )}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center justify-center gap-1.5 rounded-full bg-accent px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-dark"
+                  >
+                    <Whatsapp className="h-4 w-4" />
+                    La quiero
+                  </a>
                 </div>
               </Reveal>
             );
@@ -84,7 +79,6 @@ export default function Promotions() {
 
 function FeaturedPromo() {
   const p = promos.find((x) => x.featured)!;
-  const Icon = groupIcons[p.icon];
   // Divide la descripción larga ("a + b + c") en una lista de incluidos
   const includes = p.description
     .replace(/\.$/, "")
@@ -92,18 +86,25 @@ function FeaturedPromo() {
     .map((s) => s.trim().charAt(0).toUpperCase() + s.trim().slice(1));
 
   return (
-    <div className="relative flex h-full flex-col overflow-hidden rounded-3xl border border-brand/10 bg-white shadow-[0_20px_50px_-24px_rgba(31,90,91,0.45)]">
-      <span className="block h-1.5 w-full bg-gradient-to-r from-accent via-brand-light to-brand" />
-      <div className="flex flex-1 flex-col p-7 sm:p-8">
-        <span className="absolute right-6 top-7 inline-flex items-center gap-1.5 rounded-full bg-accent px-3 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-md">
+    <div className="grid overflow-hidden rounded-3xl border border-brand/10 bg-white shadow-[0_20px_50px_-24px_rgba(31,90,91,0.45)] lg:grid-cols-2">
+      {/* Imagen */}
+      <div className="relative min-h-[260px] lg:min-h-full">
+        <Image
+          src="/promo-plan-mujer.jpg"
+          alt={`${p.name} — ${p.category}`}
+          fill
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          className="object-cover object-top"
+        />
+        <span className="absolute left-5 top-5 inline-flex items-center gap-1.5 rounded-full bg-accent px-3 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-md">
           <Sparkle className="h-3.5 w-3.5" />
           Más popular
         </span>
+      </div>
 
-        <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-brand to-brand-light text-white">
-          <Icon className="h-7 w-7" />
-        </span>
-        <span className="mt-5 text-xs font-semibold uppercase tracking-wider text-accent-dark">
+      {/* Detalle */}
+      <div className="flex flex-col p-7 sm:p-9">
+        <span className="text-xs font-semibold uppercase tracking-wider text-accent-dark">
           {p.category}
         </span>
         <h3 className="mt-1 font-display text-3xl font-extrabold text-ink">

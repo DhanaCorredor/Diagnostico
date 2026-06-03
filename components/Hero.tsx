@@ -15,15 +15,11 @@ const trust = [
 
 export default function Hero() {
   return (
-    <section id="inicio" className="relative overflow-hidden bg-white pt-28 pb-20 sm:pt-36 sm:pb-28">
-      {/* Fondo claro con tintes suaves */}
-      <div className="absolute inset-0 bg-gradient-to-b from-surface/80 via-white to-white" />
-      <div className="absolute -right-32 -top-40 h-[34rem] w-[34rem] animate-aurora rounded-full bg-brand/10 blur-3xl" />
-      <div className="absolute -left-32 top-20 h-[28rem] w-[28rem] animate-aurora rounded-full bg-accent/10 blur-3xl [animation-delay:4s]" />
+    <section id="inicio" className="relative overflow-hidden bg-[#266d6c] pt-28 pb-14 sm:pt-32 sm:pb-20">
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="reveal text-center lg:text-left">
-          <span className="inline-flex items-center gap-2 rounded-full border border-brand/15 bg-white px-4 py-1.5 text-xs font-medium text-brand shadow-sm">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-medium text-white shadow-sm backdrop-blur">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
@@ -31,34 +27,36 @@ export default function Hero() {
             {site.bioShort}
           </span>
 
-          <h1 className="mt-6 font-display text-[2rem] font-extrabold leading-[1.08] tracking-tight text-ink [text-wrap:balance] sm:text-5xl lg:text-[4rem] lg:leading-[1.04]">
-            Tu salud merece un{" "}
-            <span className="text-gradient">diagnóstico</span>{" "}
-            confiable
+          <h1 className="mt-6 font-display text-[2rem] font-extrabold leading-[1.08] tracking-tight text-white [text-wrap:balance] sm:text-5xl lg:text-[4rem] lg:leading-[1.04]">
+            Centro de Especialidades{" "}
+            <span className="text-gradient-animate">Médicas</span>
           </h1>
 
-          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted lg:mx-0">
+          <p className="mt-4 font-display text-xl font-bold text-white sm:text-2xl">
+            {site.slogan}
+          </p>
+
+          <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-white/80 lg:mx-0">
             Ecografía integral y Doppler, holter de ritmo, MAPA, electrocardiograma
-            y ecocardiograma. Equipos modernos y especialistas a tu servicio en el
-            corazón de Maracay.
+            y ecocardiograma.
           </p>
 
           <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
             <a
-              href="#agendar"
+              href="#servicios"
               className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 font-semibold text-white shadow-[0_14px_40px_-12px_rgba(99,166,54,0.7)] transition-all hover:bg-accent-dark hover:shadow-[0_18px_50px_-12px_rgba(99,166,54,0.85)] sm:w-auto"
             >
-              Agendar mi cita
+              Ver servicios
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
             </a>
           </div>
 
-          {/* Badges de confianza */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 lg:justify-start">
+          {/* Badges de confianza — ocultos en móvil */}
+          <div className="mt-8 hidden flex-wrap items-center justify-center gap-x-5 gap-y-2 sm:flex lg:justify-start">
             {trust.map((t) => {
               const Icon = t.icon;
               return (
-                <span key={t.text} className="inline-flex items-center gap-2 text-sm text-muted">
+                <span key={t.text} className="inline-flex items-center gap-2 text-sm text-white/85">
                   <Icon className="h-4.5 w-4.5 text-accent" />
                   {t.text}
                 </span>
